@@ -1,0 +1,15 @@
+Description: FixMyCampus allows student to report maintenance, equipment and facility problems around their college campus.
+
+Problem: Students regularly encounter broken equipment or facilities but may not know who to report them to or whether they have been already reported.
+
+Users: Students, lecturers, maintenance and college administrators.
+
+Features: Issue porting, photo uploads, room/building locations, categories, upvoting existing reports, status tracking and an admin dashboard.
+
+Benefits: Makes problems easier to report and allows students to see whether an issue is being addressed.
+
+Feasibility: Very high, it can be developed using standard accounts, forms, images and database functionality.
+
+Uniqueness: Users can follow an issue through stages as "reported->acknowledged->in progress->resolved" rather than simply sending an email.
+
+Why the team should choose it: It solves a problem directly relevant to college life and provides separate student and admin systems, giving each team member meaningful development work
