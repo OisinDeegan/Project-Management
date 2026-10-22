@@ -1,0 +1,13 @@
+A = student dashbaord 
+B = Report Form
+C = Server
+D = database
+E = staff dashboard
+
+          ---->E
+          |
+          |
+A<==>B<==>C
+          |
+          |
+          ---->D
