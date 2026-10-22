@@ -1,0 +1,166 @@
+# Fix My Campus – Agile Inception Deck
+
+## Q1 – Why Are We Here?
+
+Students and staff regularly notice problems around campus, such as broken hand dryers, faulty equipment or missing software on college computers.
+
+Currently, there is no straightforward way to report these issues and receive updates on their progress.
+
+Fix My Campus aims to solve this by providing a central application where campus problems can be reported and tracked.
+
+## Q2 – Elevator Pitch
+
+Fix My Campus is a web-based issue reporting application designed for college students and staff who notice broken or malfunctioning equipment around campus.
+
+Unlike traditional emails, the application allows users to submit repair requests and receive automatic status updates as issues are addressed.
+
+Our goal is to make campus issue reporting quicker, simpler and more organised.
+
+## Q3 – Product Box
+
+**Product Name:** Fix My Campus
+
+**Main Purpose:** Making it easier for students and staff to report and track campus issues.
+
+**Key Benefits:**
+- Simple issue reporting.
+- Anonymous submissions.
+- Automatic repair status updates.
+- Improved communication about campus maintenance.
+- An organised system for managing reports.
+
+*Note: The original OneNote page includes product box images that should also be added to the GitHub documentation.*
+
+## Q4 – The NOT List
+
+### What It Is
+- An application for submitting campus repair tickets.
+- An anonymous reporting system.
+- A way to track the status of reported issues.
+
+### What It Is NOT
+- A paid application.
+- A messaging platform between students and maintenance staff.
+- A general-purpose student application.
+
+### What It Might Become
+- A feature integrated into a larger ATU student application in the future, depending on time and available resources.
+
+### Reasoning
+
+The team decided to focus on the essential issue reporting and tracking features.
+
+Anonymous reporting encourages students to raise concerns without worrying about possible negative reactions.
+
+Removing unnecessary features, such as private messaging and paid subscriptions, helps keep the application manageable.
+
+## Q5 – Meet the Neighbours
+
+This section compares Fix My Campus with existing alternatives for reporting maintenance and IT issues.
+
+*The comparison details need to be added from the original OneNote visuals.*
+
+## Q6 – Show the Solution
+
+Fix My Campus will provide a simple reporting process for students and staff.
+
+The proposed application focuses on three main areas:
+
+1. **Issue Submission:** Students and staff submit reports about problems around campus.
+2. **Issue Management:** Maintenance and IT staff review and manage incoming requests.
+3. **Status Tracking:** Users receive updates on the progress of reported issues.
+
+*The original architecture diagram should be added here and updated if the team's architecture has changed.*
+
+## Q7 – What Keeps Us Up at Night?
+
+The team must consider project risks during development, particularly those affecting the delivery and reliability of the application.
+
+For SA04, the team will review and update its five highest-priority risks.
+
+Each risk will be documented with its likelihood, impact, mitigation, monitoring approach and assigned owner.
+
+*The original Q7 risk visuals and the agreed updated risk register need to be added.*
+
+## Q8 – Size It Up
+
+The estimated development timeframe for the complete project is approximately three to four months.
+
+The team's main priority is developing an effective repair ticket application with a straightforward submission and tracking process.
+
+By keeping the application anonymous, we can avoid the additional development work associated with user profiles.
+
+We also plan to exclude messaging functionality and paid features, helping reduce the project's overall complexity.
+
+Integrating Fix My Campus into a larger student application would require additional time and resources and is not currently a priority.
+
+### SA04 Release Planning
+
+For the SA04 assignment, the release deadline is fixed at the end of semester Week 12.
+
+The team must create a release plan using one-week sprints, estimated velocity and prioritised user stories. Any functionality that cannot realistically be completed by Week 12 will be moved to a later release.
+
+*The final sprint allocation, story points and release burndown chart must be added after the release planning meeting.*
+
+## Q9 – What's Going to Give?
+
+The team has identified the following project priorities:
+
+| Factor | Priority | Explanation |
+|---|---|---|
+| Quality | Highest | The application must work reliably and avoid significant errors. |
+| Ease of Use | Highest | Students and staff should be able to report issues without difficulty. |
+| Time | Medium | The team aims to deliver the core features within the agreed timeframe. |
+| Budget | Medium | Free tools and hosting services will help reduce costs. |
+| Scope | Flexible | Additional features may be excluded to prioritise the main reporting system. |
+
+### Main Trade-Off
+
+The team will prioritise quality and ease of use over additional functionality.
+
+The application's main purpose is to allow users to submit and track campus maintenance requests.
+
+Regular progress updates and team meetings will help ensure the project stays organised.
+
+## Q10 – What's It Going to Take?
+
+### Team Members and Responsibilities
+
+| Team Member | Role | Responsibilities |
+|---|---|---|
+| Alex O'Loughlin | Scrum Master | Coordinates team activities, organises meetings, monitors Jira progress and helps remove obstacles. |
+| Oisin Deegan | Product Owner | Defines the product vision, manages priorities and ensures the application meets student needs. |
+| Valentyn Keivan | DevOps / Tester | Supports frontend and backend development, testing, deployment and system reliability. |
+
+### Estimated Project Timeline
+
+The original project estimate was approximately three months.
+
+- **Development:** Approximately 2.5 months to create the reporting system, database and staff dashboard.
+- **Testing:** Approximately 1–2 weeks for testing and fixing bugs.
+- **Launch:** Approximately one week for deployment and staff onboarding.
+
+The SA04 release plan will refine these estimates to meet the semester Week 12 deadline.
+
+### Estimated Budget
+
+The original estimated budget was €0–€100.
+
+The team aims to minimise expenses by using free development tools, student software licences, free-tier hosting and backend services.
+
+## Project Management Tools
+
+- **GitHub:** Version control, repository management and code reviews.
+- **Jira:** User stories, sprint planning and progress tracking.
+- **Microsoft OneNote:** Meeting notes, team decisions and assignment evidence.
+- **Microsoft Project:** Sprint scheduling, project milestones and release planning.
+
+## Project Status
+
+Fix My Campus is currently in the release planning and development preparation phase.
+
+The team is preparing its repository, development workflow, testing strategy and release plan before beginning full development.
+
+**Project:** Fix My Campus  
+**Team:** Alex O'Loughlin, Oisin Deegan and Valentyn Keivan  
+**Coursework:** Team Project – SA04 Release Planning and Development Preparation
