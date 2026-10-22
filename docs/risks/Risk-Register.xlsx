@@ -1,0 +1,13 @@
+# Fix My Campus – Risk Register
+
+| Risk | Likelihood | Impact Level | Mitigation | Monitoring | Owner |
+|---|---|---|---|---|---|
+| Too many features for the time available | High | High | Build the core reporting and tracking features first. | Review sprint progress and backlog priorities weekly. | Product Owner (Oisin) |
+| Reports lack detail or go to the wrong team | Medium | Medium | Require a location and category, and allow admins to reassign reports. | Review submitted reports during testing. | Developer |
+| Team availability delays progress | Medium | High | Hold regular meetings and track tasks and sprints in Jira. | Check Jira progress and team availability weekly. | Scrum Master (Alex) |
+| User information or photos exposed | Low | High | Limit access and collect only necessary information. | Check access permissions and test data security. | Developer |
+| Technical issues during development or deployment | Medium | High | Test regularly, fix bugs early and maintain backups of project code on GitHub. | Monitor GitHub Actions, test results and deployment errors. | DevOps / Tester (Valentyn) |
+
+## Risk Management
+
+The team will review these risks during sprint meetings and update the register
