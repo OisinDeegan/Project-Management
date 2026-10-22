@@ -1,0 +1,39 @@
+# Fix My Campus – Prototype Wireframes
+
+**Status:** Initial Design Concepts / Subject to Team Review
+
+## Overview
+
+These wireframes demonstrate how the Fix My Campus application could look and function.
+
+The main aim is to create a simple interface that allows students to report issues quickly while providing staff with an organised way to manage them.
+
+These are early design concepts and may change as development progresses.
+
+## Proposed Screens
+
+| Screen | Purpose | Main Elements | Proposed Epic |
+|---|---|---|---|
+| Home Page | Introduce the application and direct users to its main functions. | Report Issue button, Track Issue button, navigation. | User Interface |
+| Report Issue | Allow students to submit campus problems. | Issue title, category, location, description, optional photo. | Issue Reporting |
+| Submission Confirmation | Confirm that a report has been submitted successfully. | Confirmation message and reference number. | Issue Reporting |
+| Track Issue | Allow users to check the progress of a report. | Reference number lookup and status information. | Issue Tracking |
+| Staff Dashboard | Allow maintenance and IT staff to manage submitted reports. | Issue list, filters, categories and status controls. | Staff Management |
+| Mobile View | Make the application accessible on smaller screens. | Responsive navigation and simplified layout. | User Interface |
+
+## Design Considerations
+
+- Keep the layout simple and easy to navigate.
+- Allow anonymous issue reporting.
+- Make the reporting form quick to complete.
+- Use clear issue categories and status labels.
+- Ensure staff can quickly identify and manage reports.
+- Make the interface usable on desktop and mobile devices.
+
+## Next Steps
+
+The team will review these initial designs, decide which screens to include in the first release and refine them based on the agreed user stories.
+
+Each final wireframe must be linked to its actual Jira story key and epic, with its creator identified.
+
+**Note:** These wireframes are prototype design suggestions, not completed or approved application screens.
