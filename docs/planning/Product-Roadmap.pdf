@@ -1,0 +1,35 @@
+Must have{
+The user can select a problem from a predefined list. 2
+User can choose the room the problem is in from a dropdown 2
+User can submit a problem to the database 5
+As a maintenance worker, I want to change issue statuses so that students can track progress. 3 
+User can submit with a button 1
+The statuses the user can see are "Reviewing | Commencing Work | Repaired" -O 2
+As a user, I want to remain anonymous. 1
+As a staff member, I want to sort tasks by priority so that I can handle urgent issues first. 3 
+As a staff member, I want to search for issues so that I can find specific reports.8 
+As an IT worker, I want to filter IT-related issues so that I only see relevant tasks. 3  
+The user can select an "other" option. 2
+the user can describe the problem in a textbox if they click on the "other" option in the dropdown 1
+User can save to drafts and send later 3
+}
+Should have{
+User can add a photo of the problem (from gallery or camera) 5
+As a maintenance worker, I want to upload photos so that I can show completed repairs. 5 
+A user can check into a menu to see the overview status of the user's various reports –O 2
+As a staff member, I want to view a dashboard so that I can see all my pending and completed tasks. 2 
+A user can click/press into a specific report to receive more information about my report (date of submission/report details) -O 3
+A user can order the menu by date submitted, status & location –O  1
+A user can click/press to see the history of the report's status (went from reviewing to commencing work on X) -O 5
+A user can remove old reports from the menu once they are not interested in them anymore –O 1
+A user is notified of any changes in the status of the user's reports when the user opens the app –O 5
+A user can enable push notifications for when a status has updated –O 5
+}
+Could Have{
+If a user clicks/presses on a status, a description of what that status means pops up –O 2
+As a staff member, I want to view a task calendar so that I can see upcoming jobs. 3 
+As an IT worker, I want to add notes to reports so that I can record technical details. 2 
+As an IT worker, I want to assign tasks to colleagues so that work can be shared. 3 
+A user can customise the colours of the statuses in a settings menu –O 3
+As a maintenance worker, I want to request equipment so that I have the tools needed for repairs. 13 (needs to add in a finance manager if implemented) 
+}
