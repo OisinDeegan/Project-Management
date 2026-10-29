@@ -99,3 +99,6 @@ The team is preparing the development environment, GitHub repository, testing ap
 ## Future Development
 
 Planned development includes implementing the main application features, testing functionality, improving the user interface and preparing the final release.
+
+
+CI/CD workflow test - Dev environment
