@@ -72,5 +72,5 @@ jobs:
 
       - name: Deploy to Render
         run: curl --fail --silent --show-error --request POST "$RENDER_DEPLOY_HOOK"
-      env:
-        RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        env:
+          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
