@@ -10,8 +10,9 @@ public class MySqlExample {
 
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected!");
-
+            
             String sql = "SELECT id, name FROM users WHERE id = ?";
+            /*
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setInt(1, 1);
                 try (ResultSet rs = ps.executeQuery()) {
@@ -20,6 +21,8 @@ public class MySqlExample {
                     }
                 }
             }
+            */
+          // rework this to code that sets up the database
         } catch (SQLException e) {
             e.printStackTrace();
         }
