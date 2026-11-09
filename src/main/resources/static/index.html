@@ -15,12 +15,25 @@
 
         <select id="problemSelect">
             <option value="" selected disabled>Choose a problem...</option>
-            <option value="Problem 1">Problem 1</option>
-            <option value="Problem 2">Problem 2</option>
-            <option value="Problem 3">Problem 3</option>
-            <option value="Problem 4">Problem 4</option>
-            <option value="Problem 5">Problem 5</option>
+            <option value="Problem 1">No internet conection</option>
+            <option value="Problem 2">PC wont't turn on</option>
+            <option value="Problem 3">Lamp isn't working</option>
+            <option value="Problem 4">Projector isn't working</option>
+            <option value="Problem 5">Other problem</option>
         </select>
+
+        <div id="other">
+        <label for="problemDetails">
+            Please describe your problem:
+        </label>
+        <br>
+        <textarea 
+            id="problemDetails"
+            rows="4"
+            cols="40"
+            placeholder="What happen?">
+        </textarea>
+    </div>
 
         <p id="selectedProblem">No problem selected.</p>
     </main>
