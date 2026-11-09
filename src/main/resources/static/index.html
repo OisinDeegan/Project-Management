@@ -13,7 +13,7 @@
 
         <label for="problemSelect">Select a problem:</label>
 
-        <select id="problemSelect">
+        <select id="problemSelect" onchange="checkProblem()">
             <option value="" selected disabled>Choose a problem...</option>
             <option value="Problem 1">No internet conection</option>
             <option value="Problem 2">PC wont't turn on</option>
@@ -22,7 +22,7 @@
             <option value="Problem 5">Other problem</option>
         </select>
 
-        <div id="other">
+        <div id="otherProblem">
         <label for="problemDetails">
             Please describe your problem:
         </label>
