@@ -1,15 +1,13 @@
 function checkProblem() {
-            const dropdown = document.getElementById("problem");
-            const otherBox = document.getElementById("other");
-            const problemDetails = document.getElementById("problemDetails");
+    const selectedProblem = document.getElementById("problemSelect").value;
+    const otherBox = document.getElementById("otherProblem");
 
-            if (dropdown.value === "Other") {
-                otherBox.style.display = "block";
-            } else {
-                otherBox.style.display = "none";
-                problemDetails.value = "";
-            }
-        }
+    if (selectedProblem === "Other") {
+        otherBox.style.display = "block";
+    } else {
+        otherBox.style.display = "none";
+    }
+}
 
 
 // Get the dropdown menu and the result paragraph
