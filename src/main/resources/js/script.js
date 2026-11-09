@@ -1,3 +1,16 @@
+function checkProblem() {
+            const dropdown = document.getElementById("problem");
+            const otherBox = document.getElementById("other");
+            const problemDetails = document.getElementById("problemDetails");
+
+            if (dropdown.value === "Other") {
+                otherBox.style.display = "block";
+            } else {
+                otherBox.style.display = "none";
+                problemDetails.value = "";
+            }
+        }
+
 
 // Get the dropdown menu and the result paragraph
 const problemSelect = document.getElementById("problemSelect");
