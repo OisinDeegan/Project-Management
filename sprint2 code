@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Report an issue | Fix My Campus</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+    form, section { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin: 1.2rem 0; }
+    .field { margin-bottom: 1rem; }
+    .field > label { display: block; font-weight: 600; margin-bottom: .3rem; }
+    select, input[type="text"] { padding: .45rem; max-width: 100%; }
+    button { padding: .45rem .7rem; cursor: pointer; }
+    li { margin: .7rem 0; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Fix My Campus</h1>
+    <h2>Report an issue</h2>
+    <p>ATU Galway City, Dublin Road · Issue reporting demo</p>
+    <p>Demo reports are kept on this page until you reload or close it.</p>
+
+    <form id="issue-form">
+      <div class="field">
+        <label for="room-id">Select Room (required)</label>
+        <select id="room-id" name="roomId" required>
+          <option value="">Choose a room</option>
+          <optgroup label="Dublin Road campus">
+            <option value="galway-dublin-road-165">Room 165</option>
+            <option value="galway-dublin-road-1041">Room 1041</option>
+            <option value="galway-dublin-road-eddie-fox">Eddie Fox Resource Room</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="priority">Issue priority (required)</label>
+        <select id="priority" name="priority" required>
+          <option value="">Choose a priority</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>
+          <input type="checkbox" id="anonymous" name="anonymous" checked>
+          Submit anonymously
+        </label>
+      </div>
+      <div class="field" id="name-field" hidden>
+        <label for="reporter-name">Your name (optional)</label>
+        <input id="reporter-name" name="reporterName" type="text" maxlength="100" autocomplete="name">
+      </div>
+
+      <p>
+        <button id="submit-report" type="submit">Submit report</button>
+        <button id="cancel-edit" type="button" hidden>Cancel room change</button>
+      </p>
+      <p id="room-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <section aria-labelledby="reports-heading">
+      <h2 id="reports-heading">Staff tasks / Reports</h2>
+      <p>Reports start at <strong>Reviewing</strong>. Staff can then move them to
+        <strong>Commencing Work</strong> and finally to <strong>Repaired</strong>.</p>
+      <div class="field">
+        <label for="sort-priority">Sort tasks by priority</label>
+        <select id="sort-priority">
+          <option value="newest">Newest first</option>
+          <option value="high-first">High priority first</option>
+          <option value="low-first">Low priority first</option>
+        </select>
+      </div>
+      <p id="no-reports">No reports submitted yet.</p>
+      <ul id="report-list"></ul>
+    </section>
+  </main>
+
+  <script>
+    const form = document.querySelector("#issue-form");
+    const roomSelect = document.querySelector("#room-id");
+    const prioritySelect = document.querySelector("#priority");
+    const anonymousCheckbox = document.querySelector("#anonymous");
+    const nameField = document.querySelector("#name-field");
+    const reporterNameInput = document.querySelector("#reporter-name");
+    const sortSelect = document.querySelector("#sort-priority");
+    const feedback = document.querySelector("#room-status");
+    const submitButton = document.querySelector("#submit-report");
+    const cancelEdit = document.querySelector("#cancel-edit");
+    const reportList = document.querySelector("#report-list");
+    const noReports = document.querySelector("#no-reports");
+
+    const statusLabels = new Map([
+      ["reviewing", "Reviewing"],
+      ["commencing_work", "Commencing Work"],
+      ["repaired", "Repaired"]
+    ]);
+    const priorityLabels = new Map([
+      ["high", "High"],
+      ["medium", "Medium"],
+      ["low", "Low"]
+    ]);
+    const priorityOrder = { high: 0, medium: 1, low: 2 };
+    const rooms = new Map(
+      Array.from(roomSelect.querySelectorAll("optgroup option"),
+        option => [option.value, option.label])
+    );
+    const reports = [];
+    let editingReport = null;
+    let nextReportId = 1;
+
+    function updateAnonymousField() {
+      nameField.hidden = anonymousCheckbox.checked;
+      reporterNameInput.disabled = anonymousCheckbox.checked;
+      if (anonymousCheckbox.checked) reporterNameInput.value = "";
+    }
+
+    anonymousCheckbox.addEventListener("change", updateAnonymousField);
+    updateAnonymousField();
+
+    function renderReports() {
+      const ordered = [...reports];
+      if (sortSelect.value === "high-first") {
+        ordered.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority] || b.id - a.id);
+      } else if (sortSelect.value === "low-first") {
+        ordered.sort((a, b) => priorityOrder[b.priority] - priorityOrder[a.priority] || b.id - a.id);
+      } else {
+        ordered.sort((a, b) => b.id - a.id);
+      }
+      reportList.replaceChildren(...ordered.map(report => report.item));
+      noReports.hidden = reports.length > 0;
+    }
+
+    sortSelect.addEventListener("change", renderReports);
+
+    function setReportSummary(report) {
+      const roomLabel = rooms.get(report.roomId);
+      report.summary.textContent = `${roomLabel} — ${priorityLabels.get(report.priority)} priority — ${statusLabels.get(report.status)} — ${report.reporter}`;
+      report.changeButton.setAttribute("aria-label", `Change room for report in ${roomLabel}`);
+    }
+
+    function finishRoomEdit() {
+      const changeButton = editingReport.changeButton;
+      editingReport = null;
+      form.reset();
+      updateAnonymousField();
+      submitButton.textContent = "Submit report";
+      cancelEdit.hidden = true;
+      prioritySelect.disabled = false;
+      anonymousCheckbox.disabled = false;
+      changeButton.focus();
+    }
+
+    cancelEdit.addEventListener("click", () => {
+      if (!editingReport) return;
+      finishRoomEdit();
+      feedback.textContent = "Room change cancelled.";
+    });
+
+    roomSelect.addEventListener("change", () => {
+      const label = rooms.get(roomSelect.value);
+      feedback.textContent = label ? `Selected room: ${label}` : "";
+    });
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      const roomId = roomSelect.value;
+      const label = rooms.get(roomId);
+      if (!label) {
+        feedback.textContent = "Choose a room from the list.";
+        roomSelect.focus();
+        return;
+      }
+
+      if (editingReport) {
+        editingReport.roomId = roomId;
+        setReportSummary(editingReport);
+        finishRoomEdit();
+        feedback.textContent = `Report room updated to ${label}.`;
+        return;
+      }
+
+      const priority = prioritySelect.value;
+      if (!priorityLabels.has(priority)) {
+        feedback.textContent = "Choose a priority.";
+        prioritySelect.focus();
+        return;
+      }
+
+      // Anonymous submissions never save the entered name in the report object.
+      const reporter = anonymousCheckbox.checked
+        ? "Anonymous"
+        : (reporterNameInput.value.trim() || "Name not provided");
+
+      const summary = document.createElement("span");
+      const changeButton = document.createElement("button");
+      const item = document.createElement("li");
+      const report = {
+        id: nextReportId++, roomId, priority, reporter,
+        status: "reviewing", summary, changeButton, item
+      };
+
+      changeButton.type = "button";
+      changeButton.textContent = "Change room";
+      changeButton.addEventListener("click", () => {
+        editingReport = report;
+        roomSelect.value = report.roomId;
+        prioritySelect.value = report.priority;
+        // Room editing must not accidentally change priority or reporter.
+        prioritySelect.disabled = true;
+        anonymousCheckbox.checked = report.reporter === "Anonymous";
+        anonymousCheckbox.disabled = true;
+        updateAnonymousField();
+        reporterNameInput.disabled = true;
+        if (!anonymousCheckbox.checked) reporterNameInput.value = report.reporter;
+        submitButton.textContent = "Save room change";
+        cancelEdit.hidden = false;
+        feedback.textContent = `Choose a new room for the report in ${rooms.get(report.roomId)}.`;
+        roomSelect.focus();
+      });
+
+      setReportSummary(report);
+      item.append(summary, " ", changeButton);
+      reports.push(report);
+      renderReports();
+      form.reset();
+      updateAnonymousField();
+      feedback.textContent = `Report submitted for ${label}. Status: Reviewing.`;
+    });
+  </script>
+</body>
+</html>
