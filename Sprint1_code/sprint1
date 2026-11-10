@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Report an issue | Fix My Campus</title>
+</head>
+<body>
+  <main>
+    <h1>Fix My Campus</h1>
+    <h2>Report an issue</h2>
+    <p>ATU Galway City, Dublin Road · Issue reporting demo</p>
+    <p>Demo reports are kept on this page until you reload or close it.</p>
+
+    <form id="issue-form">
+      <div>
+        <label for="room-id">Select Room (required)</label>
+        <select id="room-id" name="roomId" required>
+          <option value="">Choose a room</option>
+          <optgroup label="Dublin Road campus">
+            <!-- Building names can be used as group labels once verified. -->
+            <option value="galway-dublin-road-165">Room 165</option>
+            <option value="galway-dublin-road-1041">Room 1041</option>
+            <option value="galway-dublin-road-eddie-fox">Eddie Fox Resource Room</option>
+          </optgroup>
+        </select>
+      </div>
+      <p>
+        <button id="submit-report" type="submit">Submit report</button>
+        <button id="cancel-edit" type="button" hidden>Cancel room change</button>
+      </p>
+      <p id="room-status" role="status"></p>
+    </form>
+
+    <section aria-labelledby="reports-heading">
+      <h2 id="reports-heading">Your reports</h2>
+      <p>Reports start at <strong>Reviewing</strong>. Staff can then move them to
+        <strong>Commencing Work</strong> and finally to <strong>Repaired</strong>.</p>
+      <p id="no-reports">No reports submitted yet.</p>
+      <ul id="report-list"></ul>
+    </section>
+  </main>
+
+  <script>
+    const form = document.querySelector("#issue-form");
+    const roomSelect = document.querySelector("#room-id");
+    const feedback = document.querySelector("#room-status");
+    const submitButton = document.querySelector("#submit-report");
+    const cancelEdit = document.querySelector("#cancel-edit");
+    const reportList = document.querySelector("#report-list");
+    const noReports = document.querySelector("#no-reports");
+    const statusLabels = new Map([
+      ["reviewing", "Reviewing"],
+      ["commencing_work", "Commencing Work"],
+      ["repaired", "Repaired"]
+    ]);
+    const rooms = new Map(
+      Array.from(roomSelect.querySelectorAll("optgroup option"),
+        option => [option.value, option.label])
+    );
+    let editingReport = null;
+
+    function finishRoomEdit() {
+      const changeButton = editingReport.changeButton;
+      editingReport = null;
+      form.reset();
+      submitButton.textContent = "Submit report";
+      cancelEdit.hidden = true;
+      changeButton.focus();
+    }
+
+    cancelEdit.addEventListener("click", () => {
+      finishRoomEdit();
+      feedback.textContent = "Room change cancelled.";
+    });
+
+    roomSelect.addEventListener("change", () => {
+      const label = rooms.get(roomSelect.value);
+      feedback.textContent = label ? `Selected room: ${label}` : "";
+    });
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const roomId = new FormData(form).get("roomId");
+      const label = rooms.get(roomId);
+      if (!label) {
+        feedback.textContent = "Choose a room from the list.";
+        roomSelect.focus();
+        return;
+      }
+
+      if (editingReport) {
+        editingReport.roomId = roomId;
+        editingReport.summary.textContent = `${label} — ${statusLabels.get(editingReport.status)}`;
+        editingReport.changeButton.setAttribute("aria-label", `Change room for report in ${label}`);
+        finishRoomEdit();
+        feedback.textContent = `Report room updated to ${label}.`;
+        return;
+      }
+
+      const summary = document.createElement("span");
+      const changeButton = document.createElement("button");
+      const report = { roomId, status: "reviewing", summary, changeButton };
+      const statusLabel = statusLabels.get(report.status);
+      const item = document.createElement("li");
+      summary.textContent = `${label} — ${statusLabel}`;
+      changeButton.type = "button";
+      changeButton.textContent = "Change room";
+      changeButton.setAttribute("aria-label", `Change room for report in ${label}`);
+      changeButton.addEventListener("click", () => {
+        editingReport = report;
+        roomSelect.value = report.roomId;
+        submitButton.textContent = "Save room change";
+        cancelEdit.hidden = false;
+        feedback.textContent = `Choose a new room for the report in ${rooms.get(report.roomId)}.`;
+        roomSelect.focus();
+      });
+      item.append(summary, " ", changeButton);
+      reportList.prepend(item);
+      noReports.hidden = true;
+
+      form.reset();
+      feedback.textContent = `Report submitted for ${label}. Status: ${statusLabel}.`;
+    });
+  </script>
+</body>
+</html>
