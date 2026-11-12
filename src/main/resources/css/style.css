@@ -45,6 +45,7 @@ select {
 }
 
 #problemDetails {
+    display: none;
     position: absolute;
     opacity: 0;
     pointer-events: none;
