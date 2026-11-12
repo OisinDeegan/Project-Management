@@ -44,3 +44,8 @@ select {
     font-weight: bold;
 }
 
+#problemDetails {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
