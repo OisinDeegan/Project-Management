@@ -3,9 +3,9 @@ function checkProblem() {
     const otherBox = document.getElementById("otherProblem");
 
     if (selectedProblem === "Other") {
-        otherBox.style.display = "block";
+        otherProblem.style.display = "block";
     } else {
-        otherBox.style.display = "none";
+        otherProblem.style.display = "none";
     }
 }
 
