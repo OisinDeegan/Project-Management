@@ -44,6 +44,6 @@ select {
     font-weight: bold;
 }
 
-#otherProblem[hidden] {
-    display: none !important;
+#otherProblem {
+    display: none;
 }
