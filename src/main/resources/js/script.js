@@ -1,12 +1,10 @@
 function checkProblem() {
+    console.log("checkProblem is working");
+
     const selectedProblem = document.getElementById("problemSelect").value;
     const otherBox = document.getElementById("otherProblem");
 
-    if (selectedProblem === "Other") {
-        otherBox.style.display = "block";
-    } else {
-        otherBox.style.display = "none";
-    }
+    otherBox.hidden = selectedProblem !== "Other";
 }
 
 
