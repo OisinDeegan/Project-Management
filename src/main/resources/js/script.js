@@ -1,24 +1,15 @@
-function checkProblem() {
-    console.log("checkProblem is working");
-
-    const selectedProblem = document.getElementById("problemSelect").value;
-    const otherBox = document.getElementById("otherProblem");
-
-    otherBox.hidden = selectedProblem !== "Other";
-}
-
-
-// Get the dropdown menu and the result paragraph
 const problemSelect = document.getElementById("problemSelect");
 const selectedProblem = document.getElementById("selectedProblem");
+const otherBox = document.getElementById("otherProblem");
 
-// Listen for changes in the dropdown menu
-problemSelect.addEventListener("change", function () {
-
-    // Get the selected problem
+function checkProblem() {
     const selectedValue = problemSelect.value;
 
-    // Display the selected problem
-    selectedProblem.textContent = "Selected problem: " + selectedValue;
+    otherBox.hidden = selectedValue !== "Other";
 
-});
+    selectedProblem.textContent = "Selected problem: " + selectedValue;
+}
+
+problemSelect.addEventListener("change", checkProblem);
+
+checkProblem();
