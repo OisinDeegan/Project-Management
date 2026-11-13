@@ -5,7 +5,11 @@ const otherBox = document.getElementById("otherProblem");
 function checkProblem() {
     const selectedValue = problemSelect.value;
 
-    otherBox.hidden = selectedValue !== "Other";
+    if (selectedValue === "Other") {
+        otherBox.style.display = "block";
+    } else {
+        otherBox.style.display = "none";
+    }
 
     selectedProblem.textContent = "Selected problem: " + selectedValue;
 }
