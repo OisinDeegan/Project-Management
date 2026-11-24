@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select a Problem</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <main class="container">
+        <h1>Problem Selection</h1>
+
+        <label for="problemSelect">Select a problem:</label>
+
+        <select id="problemSelect" onchange="checkProblem()">
+            <option value="" selected disabled>Choose a problem...</option>
+            <option value="PC conection">No internet conection</option>
+            <option value="PC">PC wont't turn on</option>
+            <option value="Lamp">Lamp isn't working</option>
+            <option value="Projector">Projector isn't working</option>
+            <option value="Other">Other problem</option>
+        </select>
+        
+        <p id="selectedProblem">No problem selected.</p>
+
+         <div id="otherProblem">
+            
+            <label for="problemDetails">
+                Please describe your problem:
+            </label>
+        
+            <textarea
+                id="problemDetails"
+                rows="4"
+                cols="40"
+                placeholder="What happened?">
+            </textarea>
+            
+        </div>
+    </main>
+
+<script src="/js/script.js"></script>
+</body>
+</html>
+
