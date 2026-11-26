@@ -9,6 +9,78 @@
 <body>
 
     <main class="container">
+
+          <h1>Fix My Campus</h1>
+  <h2>Report an issue</h2>
+  <p>ATU Galway City, Dublin Road · Issue reporting demo</p>
+  <p>Demo reports are kept on this page until you reload or close it.</p>
+
+  <form id="issue-form">
+
+    <div class="field">
+      <label for="room-id">Select Room (required)</label>
+      <select id="room-id" name="roomId" required>
+        <option value="">Choose a room</option>
+        <optgroup label="Dublin Road campus">
+          <option value="galway-dublin-road-165">Room 165</option>
+          <option value="galway-dublin-road-1041">Room 1041</option>
+          <option value="galway-dublin-road-eddie-fox">Eddie Fox Resource Room</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="priority">Issue priority (required)</label>
+      <select id="priority" name="priority" required>
+        <option value="">Choose a priority</option>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>
+        <input type="checkbox" id="anonymous" checked>
+        Submit anonymously
+      </label>
+    </div>
+
+    <div class="field" id="name-field" hidden>
+      <label for="reporter-name">Your name (optional)</label>
+      <input id="reporter-name" type="text" maxlength="100">
+    </div>
+
+    <p>
+      <button id="submit-report" type="submit">Submit report</button>
+      <button id="cancel-edit" type="button" hidden>
+        Cancel room change
+      </button>
+    </p>
+
+    <p id="room-status" role="status" aria-live="polite"></p>
+  </form>
+
+  <section>
+    <h2>Staff tasks / Reports</h2>
+
+    <p>Staff can move reports from Reviewing to Commencing Work
+      and finally to Repaired.</p>
+
+    <div class="field">
+      <label for="sort-priority">Sort tasks by priority</label>
+      <select id="sort-priority">
+        <option value="newest">Newest first</option>
+        <option value="high-first">High priority first</option>
+        <option value="low-first">Low priority first</option>
+      </select>
+    </div>
+
+    <p id="no-reports">No reports submitted yet.</p>
+    <ul id="report-list"></ul>
+  </section>
+
+    
         <h1>Problem Selection</h1>
 
         <label for="problemSelect">Select a problem:</label>
